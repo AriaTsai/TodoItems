@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "build",
-            "command": "${env:ProgramFiles(x86)}\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe", //"dotnet",
+            "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
@@ -15,7 +15,7 @@
         },
         {
             "label": "publish",
-            "command": "${env:ProgramFiles(x86)}\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe", //"dotnet",
+            "command": "dotnet",
             "type": "process",
             "args": [
                 "publish",
@@ -27,7 +27,7 @@
         },
         {
             "label": "watch",
-            "command": "${env:ProgramFiles(x86)}\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe", //"dotnet",
+            "command": "dotnet",
             "type": "process",
             "args": [
                 "watch",
@@ -37,6 +37,26 @@
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "type": "shell",
+            "label": "VS2019 MSBuild",
+            "command": "${env:ProgramFiles(x86)}\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe",
+            "args": [
+                "${workspaceFolder}/TodoApi.csproj",
+                "/p:Configuration=Debug",
+                "/p:Platform=x86",
+                "/p:GenerateFullPaths=true",
+                "/t:build"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile",
+            "options": {
+                "cwd": "${workspaceFolder}/TodoApi.csproj"
+            }
         }
     ]
 }
